@@ -34,23 +34,23 @@ export default function Skills() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-5">
+          <h2 className="text-4xl sm:text-4xl lg:text-5xl font-extrabold mb-5">
             <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
               Technical Skills
             </span>
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-black to-black mx-auto rounded-full"></div>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-black to-black mx-auto rounded-full -mb-8"></div>
         </motion.div>
 
-        <div className="-mt-20 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-5 gap-y-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-1 gap-y-1">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
               initial={{ opacity: 0, scale: 0.6 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.04 }}
+              transition={{ duration: 0.4, delay: index * 0.04 }}
               whileHover={{
                 scale: 1.05,
                 y: -5,
@@ -59,7 +59,7 @@ export default function Skills() {
               className="flex flex-col items-center"
             >
               <SkillSphere logoSrc={skill.logo} />
-              <h3 className="-mt-10 text-sm sm:text-base md:text-lg font-extrabold text-gray-800 group-hover:text-pink-800 transition-colors duration-300">
+              <h3 className="-mt-9 text-sm sm:text-base md:text-lg font-extrabold text-gray-800">
                 {skill.name}
               </h3>
             </motion.div>
