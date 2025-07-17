@@ -14,9 +14,9 @@ function useIsMobile() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768) // md breakpoint
+      setIsMobile(window.innerWidth < 768) 
     }
-    handleResize() // initial check
+    handleResize() 
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
@@ -31,7 +31,7 @@ function SphereWithDecal({ logoSrc, scale }: { logoSrc: string; scale: number })
   return (
     <mesh ref={meshRef}>
       <sphereGeometry args={[scale, 64, 64]} />
-      <meshStandardMaterial color="#db2777" metalness={0.2} roughness={0.3} />
+      <meshStandardMaterial color="#fe019a" metalness={0.2} roughness={0.3} />
       <Decal
         map={decalTexture}
         position={[0, 0, scale]} // match sphere radius

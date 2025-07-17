@@ -21,18 +21,16 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl lg:text-5xl md:text-5xl font-extrabold mb-6">
+            <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
               My Projects
             </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-rose-500 mx-auto rounded-full"></div>
-          <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
-            Here are some of my favorite projects that showcase my skills and creativity
-          </p>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-black to-black mx-auto rounded-full"></div>
+          
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="-mt-3 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -72,7 +70,7 @@ export default function Projects() {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
+                <h3 className="text-xl font-extrabold text-gray-800 mb-2">{project.title}</h3>
                 <p className="text-gray-600 mb-4 text-sm leading-relaxed">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2">

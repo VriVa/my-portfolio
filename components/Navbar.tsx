@@ -9,9 +9,7 @@ const navItems = [
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
-  { name: "Achievements", href: "#achievements" },
-  //{ name: "Experience", href: "#experience" },
-  { name: "Activities", href: "#extracurricular" },
+  
   { name: "Contact", href: "#contact" },
 ]
 
@@ -31,17 +29,17 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed  top-0 w-full z-50 transition-all duration-300 ${
         scrolled ? "bg-white/80 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mt-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl  font-bold bg-gradient-to-r from-pink-500 to-rose-500 bg-clip-text text-transparent"
+            className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent"
           >
-            vriddhi.v
+            vriddhi<span className="text-black">.</span>v
           </motion.div>
 
           {/* Desktop Menu */}
@@ -52,7 +50,7 @@ export default function Navbar() {
                 href={item.href}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className=" text-lg text-gray-700 hover:text-pink-500 transition-colors duration-200 font-medium"
+                className=" text-lg text-gray-800 font-bold hover:text-pink-500 transition-colors duration-200"
               >
                 {item.name}
               </motion.a>

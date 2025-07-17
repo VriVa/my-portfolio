@@ -11,12 +11,43 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "ProScript",
     description:
-      "A full-stack e-commerce solution with user authentication, payment integration, and admin dashboard. Built with modern technologies for optimal performance.",
+      "An AI-powered prescription manager app that detects drug interactions, contraindications, and allergy risks, parses handwritten prescriptions to flag dosage errors, retrieves similar patient cases, and provides personalized treatment recommendations.",
     image: "/placeholder.svg?height=250&width=400",
-    technologies: ["Next.js", "TypeScript", "Stripe", "Prisma", "PostgreSQL"],
-    github: "https://github.com/yourusername/ecommerce",
+    technologies: ["MERN Stack", "FastAPI", "TensorFlow", "Gemini API", "OpenAI OCR", "Fuzzy Search"],
+    github: "https://github.com/VriVa/airavat-proscript",
+    demo: "https://your-ecommerce-demo.com",
+  },
+  {
+    id: 2,
+    title: "RACE",
+    description:
+      "An AI-powered platform that analyzes resumes using OCR, generates professional LaTeX versions, scores them with ATS metrics, suggests improvements, creates custom cover letters, and recommends courses based on skill gaps.",
+    image: "/placeholder.svg?height=250&width=400",
+    technologies: ["MERN Stack", "Flask", "Langchain", "Gemini API", "PaddleOCR", "TeX engine"],
+    github: "https://github.com/trinity918/raceSE",
+    demo: "https://your-ecommerce-demo.com",
+  },
+  {
+    id: 3,
+    title: "Wanderlust",
+    description:
+      "An app to plan trip with AI-powered itineraries according to your budget, food preferences, trip type, etc. The itinerary also includes weather forecast and directions.",
+    image: "/placeholder.svg?height=250&width=400",
+    technologies: ["ReactJS", "TailwindCSS", "Gemini API", "Google Maps API"],
+    github: "https://github.com/trinity918/raceSE",
+    demo: "https://your-ecommerce-demo.com",
+  },
+  {
+    id: 4,
+    title: "SheFunds",
+    description:
+      "A financial literacy platform designed exclusively for women, addressing their unique financial challenges and providing education, tools, and community support to help them achieve economic independence.",
+    image: "/placeholder.svg?height=250&width=400",
+    technologies: ["ReactJS", "TailwindCSS", "Framer Motion"],
+    github: "https://github.com/trinity918/raceSE",
     demo: "https://your-ecommerce-demo.com",
   }
+  
 ]
