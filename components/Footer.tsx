@@ -27,7 +27,7 @@ export default function Footer() {
             transition={{ duration: 0.8 }}
             className="flex items-center gap-1 sm:gap-2 text-pink-100 text-sm sm:text-base mb-2"
           >
-            <span>Designed and Developed with</span>
+            <span>Developed with</span>
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}

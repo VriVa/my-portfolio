@@ -37,7 +37,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-4">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent"
+            className="text12xl md:text-3xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent"
           >
             vriddhi<span className="text-black">.</span>v
           </motion.div>
@@ -50,7 +50,7 @@ export default function Navbar() {
                 href={item.href}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className=" text-lg text-gray-800 font-bold hover:text-pink-500 transition-colors duration-200"
+                className=" text-lg text-gray-800 font-semibold hover:text-pink-500 transition-colors duration-200"
               >
                 {item.name}
               </motion.a>

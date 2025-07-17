@@ -30,13 +30,13 @@ function SphereWithDecal({ logoSrc, scale }: { logoSrc: string; scale: number })
 
   return (
     <mesh ref={meshRef}>
-      <sphereGeometry args={[scale, 64, 64]} />
+      <sphereGeometry args={[scale, 32, 32]} />
       <meshStandardMaterial color="#fe019a" metalness={0.2} roughness={0.3} />
       <Decal
         map={decalTexture}
-        position={[0, 0, scale]} // match sphere radius
+        position={[0, 0, scale]} 
         rotation={[0, 0, 0]}
-        scale={scale * 0.8} // proportional logo size
+        scale={scale * 0.8} 
       />
     </mesh>
   )

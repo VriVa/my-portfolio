@@ -40,8 +40,8 @@ export default function CustomCursor() {
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-50 mix-blend-multiply"
         animate={{
-          x: mousePosition.x - 16, // Center the cursor
-          y: mousePosition.y - 16, // Center the cursor
+          x: mousePosition.x - 16, 
+          y: mousePosition.y - 16, 
           scale: isHovering ? 1.5 : 1,
         }}
         transition={{
@@ -50,10 +50,10 @@ export default function CustomCursor() {
           damping: 28,
         }}
       >
-        {/* Cursor shape - now a simple circle */}
+        
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="16" cy="16" r="10" fill="url(#gradient1)" stroke="#ec4899" strokeWidth="1.5" />
-          {/* Gradient definition */}
+          
           <defs>
             <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#fce7f3" />
@@ -63,7 +63,7 @@ export default function CustomCursor() {
           </defs>
         </svg>
 
-        {/* Pulsating Glow effect */}
+        
         <motion.div
           className="absolute inset-0 -m-2 bg-pink-300/20 rounded-full blur-sm"
           animate={{
@@ -78,17 +78,17 @@ export default function CustomCursor() {
         />
       </motion.div>
 
-      {/* Trailing Cursor (the "crazy effect") */}
+      
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-40 mix-blend-multiply"
         animate={{
-          x: mousePosition.x - 20, // Slightly larger, so adjust center
-          y: mousePosition.y - 20, // Slightly larger, so adjust center
-          scale: isHovering ? 1.8 : 1.2, // Scales more on hover
+          x: mousePosition.x - 20, 
+          y: mousePosition.y - 20, 
+          scale: isHovering ? 1.8 : 1.2, 
         }}
         transition={{
           type: "spring",
-          stiffness: 300, // Softer spring for delay
+          stiffness: 300, 
           damping: 30,
         }}
       >
