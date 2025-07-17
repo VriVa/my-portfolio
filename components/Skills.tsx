@@ -1,7 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import { SkillSphere } from "./SkillsSphere"
 
@@ -38,12 +37,11 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-5">
-            <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text  text-transparent">
+            <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
               Technical Skills
             </span>
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r  from-black to-black mx-auto rounded-full"></div>
-          
+          <div className="w-24 h-1.5 bg-gradient-to-r from-black to-black mx-auto rounded-full"></div>
         </motion.div>
 
         <div className="-mt-20 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-5 gap-y-2">
@@ -52,16 +50,16 @@ export default function Skills() {
               key={skill.name}
               initial={{ opacity: 0, scale: 0.6 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.04 }}
               whileHover={{
                 scale: 1.05,
                 y: -5,
                 transition: { duration: 0.2 },
               }}
-              className="flex flex-col items-center "
+              className="flex flex-col items-center"
             >
               <SkillSphere logoSrc={skill.logo} />
-              <h3 className="-mt-10 ttext-sm sm:text-base md:text-lg font-extrabold text-gray-800 group-hover:text-pink-800 transition-colors duration-300">
+              <h3 className="-mt-10 text-sm sm:text-base md:text-lg font-extrabold text-gray-800 group-hover:text-pink-800 transition-colors duration-300">
                 {skill.name}
               </h3>
             </motion.div>

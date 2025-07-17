@@ -15,19 +15,22 @@ export default function CustomCursor() {
     const handleMouseEnter = () => setIsHovering(true)
     const handleMouseLeave = () => setIsHovering(false)
 
-    // Add event listeners for hover elements
-    const hoverElements = document.querySelectorAll('a, button, [role="button"], input, textarea')
-
-    hoverElements.forEach((el) => {
-      el.addEventListener("mouseenter", handleMouseEnter)
-      el.addEventListener("mouseleave", handleMouseLeave)
-    })
+    
+    const addHoverListeners = () => {
+      const hoverTargets = document.querySelectorAll("a, button, [role='button'], input, textarea, label")
+      hoverTargets.forEach((el) => {
+        el.addEventListener("mouseenter", handleMouseEnter)
+        el.addEventListener("mouseleave", handleMouseLeave)
+      })
+    }
 
     window.addEventListener("mousemove", updateMousePosition)
+    addHoverListeners()
 
     return () => {
       window.removeEventListener("mousemove", updateMousePosition)
-      hoverElements.forEach((el) => {
+      const hoverTargets = document.querySelectorAll("a, button, [role='button'], input, textarea, label")
+      hoverTargets.forEach((el) => {
         el.removeEventListener("mouseenter", handleMouseEnter)
         el.removeEventListener("mouseleave", handleMouseLeave)
       })
@@ -36,12 +39,29 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Main Cursor */}
+      {/* Outer blur ring */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-50 mix-blend-multiply"
+        className="fixed top-0 left-0 pointer-events-none z-[9998] mix-blend-multiply"
         animate={{
-          x: mousePosition.x - 16, 
-          y: mousePosition.y - 16, 
+          x: mousePosition.x - 20,
+          y: mousePosition.y - 20,
+          scale: isHovering ? 1.8 : 1.2,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }}
+      >
+        <div className="w-10 h-10 rounded-full bg-rose-400/30 blur-md" />
+      </motion.div>
+
+      {/* Main cursor */}
+      <motion.div
+        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-multiply"
+        animate={{
+          x: mousePosition.x - 16,
+          y: mousePosition.y - 16,
           scale: isHovering ? 1.5 : 1,
         }}
         transition={{
@@ -50,10 +70,8 @@ export default function CustomCursor() {
           damping: 28,
         }}
       >
-        
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="16" cy="16" r="10" fill="url(#gradient1)" stroke="#ec4899" strokeWidth="1.5" />
-          
           <defs>
             <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#fce7f3" />
@@ -63,7 +81,7 @@ export default function CustomCursor() {
           </defs>
         </svg>
 
-        
+        {/* Inner pulsating blur */}
         <motion.div
           className="absolute inset-0 -m-2 bg-pink-300/20 rounded-full blur-sm"
           animate={{
@@ -72,27 +90,10 @@ export default function CustomCursor() {
           }}
           transition={{
             duration: 2,
-            repeat: Number.POSITIVE_INFINITY,
+            repeat: Infinity,
             ease: "easeInOut",
           }}
         />
-      </motion.div>
-
-      
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-40 mix-blend-multiply"
-        animate={{
-          x: mousePosition.x - 20, 
-          y: mousePosition.y - 20, 
-          scale: isHovering ? 1.8 : 1.2, 
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 300, 
-          damping: 30,
-        }}
-      >
-        <div className="w-10 h-10 rounded-full bg-rose-400/30 blur-md" />
       </motion.div>
     </>
   )
