@@ -1,17 +1,18 @@
 "use client"
 
-import type React from "react"
 import { useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
-import { Send, Github, Linkedin, Mail, Phone, MapPin } from "lucide-react"
+import { Send, Github, Linkedin, Mail,  MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import emailjs from "emailjs-com"
 
 export default function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,16 +20,33 @@ export default function Contact() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-  }
+  const [isSending, setIsSending] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSending(true)
+
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+  process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+  formData,
+  process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!     
+      )
+      .then(() => {
+        alert("Message sent successfully!")
+        setFormData({ name: "", email: "", subject: "", message: "" })
+        setIsSending(false)
+      })
+      .catch((error) => {
+        console.error("Email error:", error)
+        alert("Failed to send message. Please try again later.")
+        setIsSending(false)
+      })
   }
 
   return (
@@ -43,7 +61,7 @@ export default function Contact() {
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6">
             <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
-              Get In Touch
+              Contact Me
             </span>
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-black to-black mx-auto rounded-full"></div>
@@ -57,52 +75,43 @@ export default function Contact() {
         >
           {/* Left side */}
           <div className="space-y-4 text-sm sm:text-base">
-            <h3 className="text-xl sm:text-2xl font-extrabold text-gray-800 mb-1">Let's Connect</h3>
+            <h3 className="text-xl md:text-3xl sm:text-2xl font-extrabold text-gray-800 mb-1">{"Let's Connect"}</h3>
             <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+              {"I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision."}
               Whether you have a question, want to collaborate, or just want to say hi, feel free to reach out!
             </p>
 
             <div className="space-y-3 pt-2">
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-br from-pink-100 to-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
                   <Mail className="w-4 h-4 text-pink-600" />
                 </div>
-                <div className="min-w-0">
-                  <p className="font-medium text-gray-800 text-sm sm:text-base">Email</p>
-                  <p className="text-gray-600 text-xs sm:text-sm break-all">vvriddhi@gmail.com</p>
+                <div>
+                  <p className="font-medium text-gray-800">Email</p>
+                  <p className="text-gray-600 break-all text-sm">vvriddhi@gmail.com</p>
                 </div>
               </div>
 
+              
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-br from-pink-100 to-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-4 h-4 text-pink-600" />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-medium text-gray-800 text-sm sm:text-base">Phone</p>
-                  <p className="text-gray-600 text-xs sm:text-sm">+91 8369603054</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 bg-gradient-to-br from-pink-100 to-rose-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
                   <MapPin className="w-4 h-4 text-pink-600" />
                 </div>
-                <div className="min-w-0">
-                  <p className="font-medium text-gray-800 text-sm sm:text-base">Location</p>
-                  <p className="text-gray-600 text-xs sm:text-sm">Borivali West, Mumbai, Maharashtra</p>
+                <div>
+                  <p className="font-medium text-gray-800">Location</p>
+                  <p className="text-gray-600 text-sm">Borivali West, Mumbai, Maharashtra</p>
                 </div>
               </div>
             </div>
 
             <div className="pt-3">
-              <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-3">Socials</h4>
+              <h4 className="text-lg font-bold text-gray-800 mb-4">Socials</h4>
               <div className="flex gap-3">
                 <motion.a
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   href="https://github.com/VriVa"
-                  className="p-3 sm:p-4 bg-white rounded-full shadow-md text-gray-700 hover:text-pink-600 transition-colors"
+                  className="p-3 bg-white rounded-full shadow-md text-gray-700 hover:bg-pink-100 hover:text-pink-600 transition-colors"
                 >
                   <Github size={24} />
                 </motion.a>
@@ -110,7 +119,7 @@ export default function Contact() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   href="https://linkedin.com/in/vriddhivashi"
-                  className="p-3 sm:p-4 bg-white rounded-full shadow-md text-gray-700 hover:text-pink-600 transition-colors"
+                  className="p-3 bg-white rounded-full shadow-md text-gray-700 hover:bg-pink-100 hover:text-pink-600 transition-colors"
                 >
                   <Linkedin size={24} />
                 </motion.a>
@@ -118,81 +127,23 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right side - Form */}
+          {/* Right side */}
           <div className="space-y-4 text-sm sm:text-base">
-            <h3 className="text-xl sm:text-2xl font-extrabold text-gray-800 mb-1">Drop a mail to me!</h3>
+            <h3 className="text-xl md:text-3xl font-extrabold text-gray-800 mb-1">Drop me a mail!</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-bold text-gray-800 mb-1">
-                  Your Name
-                </label>
-                <Input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full text-sm p-2.5 rounded-lg border border-gray-300 focus:border-pink-500 focus:ring-pink-500"
-                  placeholder="What's your good name?"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-bold text-gray-800 mb-1">
-                  Your Email
-                </label>
-                <Input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full text-sm p-2.5 rounded-lg border border-gray-300 focus:border-pink-500 focus:ring-pink-500"
-                  placeholder="What's your email address?"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-sm font-bold text-gray-800 mb-1">
-                  Subject
-                </label>
-                <Input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full text-sm p-2.5 rounded-lg border border-gray-300 focus:border-pink-500 focus:ring-pink-500"
-                  placeholder="What's the subject?"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-bold text-gray-800 mb-1">
-                  Your Message
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  className="w-full text-sm p-2.5 rounded-lg border border-gray-300 focus:border-pink-500 focus:ring-pink-500 resize-none"
-                  placeholder="What you want to say?"
-                />
-              </div>
+              <Input name="name" placeholder="Your Name" required value={formData.name} onChange={handleChange} />
+              <Input name="email" placeholder="Your Email" type="email" required value={formData.email} onChange={handleChange} />
+              <Input name="subject" placeholder="Subject" required value={formData.subject} onChange={handleChange} />
+              <Textarea name="message" placeholder="Your Message" rows={4} required value={formData.message} onChange={handleChange} />
 
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="pt-1">
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-medium py-2.5 rounded-lg flex items-center justify-center gap-2 text-sm"
+                  disabled={isSending}
+                  className="w-full bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-700 hover:to-pink-700 text-white font-medium py-2.5 rounded-lg flex items-center justify-center gap-2 text-sm"
                 >
-                  Send
-                  <Send size={16} />
+                  {isSending ? "Sending..." : "Send"}
+                  {!isSending && <Send size={16} />}
                 </Button>
               </motion.div>
             </form>
