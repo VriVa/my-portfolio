@@ -14,10 +14,12 @@ function useIsMobile() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768) 
+      setIsMobile(window.innerWidth < 768) // Adjust as needed
     }
-    handleResize() 
+
+    handleResize() // Initial check
     window.addEventListener("resize", handleResize)
+
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
@@ -34,9 +36,9 @@ function SphereWithDecal({ logoSrc, scale }: { logoSrc: string; scale: number })
       <meshStandardMaterial color="#fe019a" metalness={0.2} roughness={0.3} />
       <Decal
         map={decalTexture}
-        position={[0, 0, scale]} 
+        position={[0, 0, scale]} // Puts decal on front
         rotation={[0, 0, 0]}
-        scale={scale * 0.8} 
+        scale={scale * 0.8}
       />
     </mesh>
   )
@@ -47,16 +49,19 @@ export function SkillSphere({ logoSrc }: SkillSphereProps) {
   const sphereScale = isMobile ? 1.2 : 1.75
 
   return (
-    <div className="w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56">
+    <div className="w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 touch-none">
       <Canvas>
         <ambientLight intensity={0.6} />
         <directionalLight position={[3, 2, 5]} intensity={1.2} />
         <SphereWithDecal logoSrc={logoSrc} scale={sphereScale} />
-        <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          autoRotate={false}
-        />
+        {/* OrbitControls only on desktop */}
+        {!isMobile && (
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            autoRotate={false}
+          />
+        )}
       </Canvas>
     </div>
   )

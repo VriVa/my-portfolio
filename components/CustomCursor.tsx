@@ -6,8 +6,17 @@ import { motion } from "framer-motion"
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(true) 
 
   useEffect(() => {
+   
+    const mq = window.matchMedia("(pointer: fine)")
+    setIsDesktop(mq.matches)
+
+    const handleResize = () => {
+      setIsDesktop(window.matchMedia("(pointer: fine)").matches)
+    }
+
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
@@ -15,7 +24,6 @@ export default function CustomCursor() {
     const handleMouseEnter = () => setIsHovering(true)
     const handleMouseLeave = () => setIsHovering(false)
 
-    
     const addHoverListeners = () => {
       const hoverTargets = document.querySelectorAll("a, button, [role='button'], input, textarea, label")
       hoverTargets.forEach((el) => {
@@ -24,11 +32,17 @@ export default function CustomCursor() {
       })
     }
 
-    window.addEventListener("mousemove", updateMousePosition)
-    addHoverListeners()
+    if (mq.matches) {
+      window.addEventListener("mousemove", updateMousePosition)
+      addHoverListeners()
+    }
+
+    window.addEventListener("resize", handleResize)
 
     return () => {
       window.removeEventListener("mousemove", updateMousePosition)
+      window.removeEventListener("resize", handleResize)
+
       const hoverTargets = document.querySelectorAll("a, button, [role='button'], input, textarea, label")
       hoverTargets.forEach((el) => {
         el.removeEventListener("mouseenter", handleMouseEnter)
@@ -36,6 +50,9 @@ export default function CustomCursor() {
       })
     }
   }, [])
+
+  
+  if (!isDesktop) return null
 
   return (
     <>
