@@ -42,11 +42,11 @@ export default function About() {
             </h3>
 
             <p className="text-base sm:text-lg text-gray-800 mb-6 leading-relaxed">
-              I enjoy building web applications by integrating different technologies. I have experience in React.js, Node.js, Express.js, MongoDB, and Next.js. I love creating user-friendly interfaces that provide a seamless experience.
+              I enjoy building web applications by integrating different technologies. I have experience in React.js, Node.js, Express.js, MongoDB, and Next.js. I am passionate about creating user-friendly interfaces that provide a seamless experience.
             </p>
 
             <p className="text-base sm:text-lg text-gray-800 mb-8 leading-relaxed">
-              {"I am currently pursuing a minor in Banking Technology from Barclays India. I believe in continuous learning and building innovative solutions that make a difference. Beyond academics and tech, I’ve had the privilege of being an active member of the Rotaract Club and a mentor at the Abhyudaya NGO. These experiences have helped me grow into a more empathetic and responsible leader, while strengthening my communication, teamwork, and mentorship skills."}
+              {"I am currently pursuing a minor in Banking Technology from Barclays. I believe in continuous learning and building innovative solutions that make a difference. Beyond academics and tech, I’ve had the privilege of being an active member of the Rotaract Club and a mentor at the Abhyudaya NGO. These experiences have helped me grow into a more empathetic and responsible leader, while strengthening my communication, teamwork, and mentorship skills."}
             </p>
 
             <div className="grid grid-cols-3 gap-4 sm:gap-6">

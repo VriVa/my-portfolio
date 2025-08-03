@@ -130,7 +130,7 @@ html {
   transition: transform 0.2s ease-out;
 }
 
-/* Ensure content appears above checkered background */
+
 main,
 nav,
 footer {
