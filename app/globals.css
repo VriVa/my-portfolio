@@ -93,20 +93,8 @@ body {
   }
 }
 
-/* Custom cursor styles */
-* {
-  cursor: none !important;
-}
 
-/* Hide default cursor on interactive elements */
-a,
-button,
-[role="button"],
-input,
-textarea,
-select {
-  cursor: none !important;
-}
+
 
 /* Smooth scrolling */
 html {

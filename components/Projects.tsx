@@ -26,7 +26,7 @@ export default function Projects() {
               My Projects
             </span>
           </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-black to-black mx-auto rounded-full"></div>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-gray-900 to-gray-900 mx-auto rounded-full"></div>
           
         </motion.div>
 

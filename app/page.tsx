@@ -7,14 +7,14 @@ import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
-import CustomCursor from "@/components/CustomCursor"
+
 import CurtainBackground from "@/components/CurtainBackground"
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen cursor-none">
+    <div className="relative min-h-screen ">
       <CurtainBackground />
-      <CustomCursor />
+      
       <Navbar />
       <main>
         <Home />

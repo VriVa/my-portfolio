@@ -36,10 +36,10 @@ export default function Navbar() {
       <div className="mt-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent"
+            whileHover={{ scale: 1.05 }} 
+            className="text-2xl  md:text-3xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent   "
           >
-            vriddhi<span className="text-black">.</span>v
+            <span className="text-gray-800">{"<"}</span> vriddhi <span className="text-gray-800">{"/>"}</span>
           </motion.div>
 
           {/* Desktop Menu */}

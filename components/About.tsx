@@ -27,7 +27,7 @@ export default function About() {
               About Me
             </span>
           </h2>
-          <div className="w-20 sm:w-24 h-1.5 bg-gradient-to-r from-black to-black mx-auto rounded-full -mb-5"></div>
+          <div className="w-20 sm:w-24 h-1.5 bg-gradient-to-r from-gray-900 to-gray-900 mx-auto rounded-full -mb-5"></div>
         </motion.div>
 
         <div className="grid gap-12 items-center lg:grid-cols-[3fr_2fr]">
@@ -37,7 +37,7 @@ export default function About() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-2xl sm:text-3xl font-bold text-black mb-6">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
               {"Hi! I'm Vriddhi, a Computer Engineering Student at Sardar Patel Institute of Technology"}
             </h3>
 
