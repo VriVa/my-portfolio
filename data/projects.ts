@@ -15,7 +15,7 @@ export const projects: Project[] = [
     description:
       "An AI-powered prescription manager app that detects drug interactions, contraindications, and allergy risks, parses handwritten prescriptions to flag dosage errors, retrieves similar patient cases, and provides personalized treatment recommendations.",
     image: "/projects/proscript.png",
-    technologies: ["MERN Stack", "FastAPI", "TensorFlow", "Gemini API", "OpenAI OCR", "Fuzzy Search"],
+    technologies: ["MERN Stack", "FastAPI", "TensorFlow", "Gemini API", "EasyOCR", "Fuzzy Search"],
     github: "https://github.com/DecayDestructor/airavat-proscript",
     demo: "https://drive.google.com/drive/folders/1hdhWUxo7vkVjPl-sRPQY00R_KE0zql44?usp=sharing",
   },
@@ -25,28 +25,28 @@ export const projects: Project[] = [
     description:
       "An AI-powered platform that analyzes resumes using OCR, generates professional LaTeX versions, scores them with ATS metrics, suggests improvements, creates custom cover letters, and recommends courses based on skill gaps.",
     image: "/projects/race.png",
-    technologies: ["MERN Stack", "Flask", "Langchain", "Gemini API", "PaddleOCR", "TeX engine"],
-    github: "https://github.com/trinity918/raceSE",
-    demo: "https://drive.google.com/drive/folders/1hdhWUxo7vkVjPl-sRPQY00R_KE0zql44?usp=sharing",
-  },
-  {
-    id: 4,
-    title: "SheFunds",
-    description:
-      "A financial literacy platform designed exclusively for women, addressing their unique financial challenges and providing education, tools, and community support to help them achieve economic independence.",
-    image: "/projects/shefunds.png",
-    technologies: ["ReactJS", "TailwindCSS", "Framer Motion"],
+    technologies: ["MERN Stack", "Flask", "Langchain", "Gemini API", "TeX engine"],
     github: "https://github.com/trinity918/raceSE",
     demo: "https://drive.google.com/drive/folders/1hdhWUxo7vkVjPl-sRPQY00R_KE0zql44?usp=sharing",
   },
   {
     id: 3,
-    title: "Wanderlust",
+    title: "StockMaster",
     description:
-      "An app to plan trip with AI-powered itineraries according to your budget, food preferences, trip type, etc. The itinerary also includes weather forecast and directions.",
-    image: "/projects/wanderlust.png",
-    technologies: ["ReactJS", "TailwindCSS", "Gemini API", "Google Maps API"],
-    github: "https://github.com/trinity918/raceSE",
+      "A simple and scalable Inventory Management System which helps you manage warehouses, stock, receipts, deliveries, and internal adjustments with a clean UI and modern backend",
+    image: "/projects/stockmaster.jpeg",
+    technologies: ["ReactJS", "FastAPI", "Supabase"],
+    github: "https://github.com/VriVa/StockMaster-IMS",
+    demo: "https://drive.google.com/drive/folders/1hdhWUxo7vkVjPl-sRPQY00R_KE0zql44?usp=sharing",
+  },
+  {
+    id: 4,
+    title: "ZeroVault",
+    description:
+      "A privacy-first password manager that lets users authenticate and access their vault without ever revealing passwords or master keys to the server.It uses zero-knowledge proofs so the server can verify identity while only storing encrypted data and public verification values. Also includes key recvery feature.",
+    image: "/projects/zerovault.png",
+    technologies: ["ReactJS", "Flask", "MongoDB"],
+    github: "https://github.com/VriVa/ZeroVault-ZKP",
     demo: "https://drive.google.com/drive/folders/1hdhWUxo7vkVjPl-sRPQY00R_KE0zql44?usp=sharing",
   }
   
