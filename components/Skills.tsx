@@ -7,6 +7,8 @@ import Image from "next/image"
 const skills = [
   { name: "Java", logo: "/logos/java.png" },
   { name: "C", logo: "/logos/c.png" },
+  { name: "Python", logo: "/logos/python.png" },
+  { name: "TypeScript", logo: "/logos/typescript.png" },
   { name: "HTML 5", logo: "/logos/html.png" },
   { name: "CSS 3", logo: "/logos/css.png" },
   { name: "JavaScript", logo: "/logos/javascript.png" },
@@ -14,11 +16,13 @@ const skills = [
   { name: "ExpressJS", logo: "/logos/express.png" },
   { name: "NodeJS", logo: "/logos/nodejs.png" },
   { name: "MongoDB", logo: "/logos/mongodb.png" },
-  { name: "TypeScript", logo: "/logos/typescript.png" },
   { name: "NextJS", logo: "/logos/nextjs.png" },
   { name: "Tailwind CSS", logo: "/logos/tailwindcss.png" },
+  { name: "Streamlit", logo: "/logos/streamlit.png" },
   { name: "MySQL", logo: "/logos/mysql.png" },
   { name: "PostgreSQL", logo: "/logos/postgresql.png" },
+  { name: "Redis", logo: "/logos/redis.png" },
+  { name: "FastAPI", logo: "/logos/fastapi.png" },
   { name: "Git", logo: "/logos/git.png" },
 ]
 
@@ -50,8 +54,9 @@ export default function Skills() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-6 md:gap-8 lg:gap-12 mt-2 sm:mt-0 scale-95 sm:scale-100"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-6 md:gap-6 lg:gap-8 mt-2 sm:mt-0 scale-95 sm:scale-100"
         >
+          
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
